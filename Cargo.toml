@@ -1,5 +1,7 @@
 [package]
 name = "shopify-rust"
+description = "A Rust Library for interacting with the Shopify API."
+license = "MIT License"
 version = "0.1.0"
 authors = ["Admir Saheta <admirxsaheta@gmail.com>"]
 edition = "2021"
