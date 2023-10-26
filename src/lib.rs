@@ -19,15 +19,15 @@ pub struct Credentials {
 impl Credentials {
     pub fn new(api_key: String, secret: String) -> Self {
         Credentials {
-            api_key: api_key,
-            secret: secret
+            api_key,
+            secret,
         }
     }
 }
 
 #[derive(Clone, Copy)]
 pub enum AccessMode {
-    Offline, 
+    Offline,
     Online,
 }
 
@@ -46,10 +46,25 @@ pub struct ShopifyApp {
     pub auth_callback_url: String,
     pub credentials: Credentials,
     pub host: String,
-    pub scopes: Vec<&'static str>
+    pub scopes: Vec<&'static str>,
 }
 
 impl ShopifyApp {
+    pub fn new(
+        access_mode: AccessMode,
+        auth_callback_url: String,
+        credentials: Credentials,
+        host: String,
+        scopes: Vec<&'static str>,
+    ) -> Self {
+        ShopifyApp {
+            access_mode,
+            auth_callback_url,
+            credentials,
+            host,
+            scopes,
+        }
+    }
     pub fn validate_auth(
         &self,
         query_params: &Vec<(String, String)>,
